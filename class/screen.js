@@ -90,7 +90,7 @@ class Screen {
   static setGrid(row, col, char) {
     if (!Screen.initialized) return;
 
-    if (char.length !== 1) {
+    if (char.length > 2) {
       throw new Error("invalid grid character");
     }
     Screen.grid[row][col] = char;
@@ -147,7 +147,7 @@ class Screen {
       }
 
       if (Screen.gridLines && row > 0) {
-        let horizontalGridLine = new Array(rowCopy.length * 4 - 1).fill('-');
+        let horizontalGridLine = new Array(rowCopy.length * 5 - 1).fill('-');
         horizontalGridLine.unshift(`${Screen.borderChar}${Screen.defaultBackgroundColor}`);
         horizontalGridLine.push(`\x1b[0m${Screen.borderChar}`);
         console.log(horizontalGridLine.join(''));
